@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist/wght.css";
+
+@theme {
+  --font-sans: "Geist Variable", system-ui, sans-serif;
+
+  --color-ink-950: #000000;
+  --color-ink-900: #181818;
+  --color-ink-800: #1f1f1f;
+  --color-ink-700: #272727;
+  --color-ink-600: #313131;
+  --color-muted: #9b9b9b;
+
+  --ease-base: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-pop: pop 500ms var(--ease-base);
+  --animate-fade: fade 500ms var(--ease-base);
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+  @keyframes fade-only {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes shimmer {
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
+
+@utility heading-4 { @apply text-3xl font-semibold text-balance; }
+@utility heading-5 { @apply text-2xl font-semibold text-balance; }
+@utility heading-6 { @apply text-xl font-semibold text-balance; }
+@utility title-3 { @apply text-base font-medium; }
+@utility title-4 { @apply text-sm font-medium; }
+@utility body-5 { @apply text-sm font-medium text-pretty; }
+@utility body-6 { @apply text-sm font-normal text-pretty; }
+@utility button-md { @apply text-base font-semibold; }
+@utility button-sm { @apply text-sm font-semibold; }
+@utility caption-1 { @apply text-sm font-medium; }
+@utility caption-3 { @apply text-xs font-semibold; }
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply overflow-hidden bg-ink-950 font-sans text-white antialiased select-none;
+    color-scheme: dark;
+  }
+
+  kbd,
+  input,
+  select,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink-600) transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      transition-duration: 1ms !important;
+      animation-name: fade-only !important;
+    }
+  }
+}

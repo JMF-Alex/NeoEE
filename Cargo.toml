@@ -1,0 +1,32 @@
+[package]
+name = "NeoEE"
+version = "0.2.0"
+edition = "2024"
+
+[lib]
+name = "neoee"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+tauri = { version = "2.12.5", features = [] }
+
+[build-dependencies]
+tauri-build = { version = "2.7.4", features = [] }
+
+[[test]]
+name = "error"
+path = "tests/error.rs"
+
+[[test]]
+name = "models"
+path = "tests/models.rs"
+
+[[test]]
+name = "services_config"
+path = "tests/services/config.rs"
+
+[[test]]
+name = "services_fs"
+path = "tests/services/fs.rs"

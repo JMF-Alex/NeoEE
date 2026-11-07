@@ -1,0 +1,19 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { I18nProvider } from "./i18n";
+import "./index.css";
+
+window.addEventListener("keydown", (e) => {
+  if (/^F\d+$/.test(e.key) && !(import.meta.env.DEV && e.key === "F12")) e.preventDefault();
+  if (!import.meta.env.DEV && e.ctrlKey && /^[fghjknoprsu]$/i.test(e.key)) e.preventDefault();
+});
+if (!import.meta.env.DEV) window.addEventListener("contextmenu", (e) => e.preventDefault());
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <I18nProvider>
+      <App />
+    </I18nProvider>
+  </StrictMode>,
+);
